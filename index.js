@@ -1,3 +1,4 @@
+// Import safe login function
 const safe = require('./safe.js')
 
 // Library import
