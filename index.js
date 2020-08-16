@@ -26,4 +26,5 @@ watcher.on('message', message => {
 
 
 // Login with listeners active
+// Function used in hidden file to hide bot token
 safe.watcherLogin(watcher)
