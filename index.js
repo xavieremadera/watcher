@@ -1,3 +1,5 @@
+const safe = require('./safe.js')
+
 // Library import
 const Discord = require('discord.js')
 
@@ -24,4 +26,4 @@ watcher.on('message', message => {
 
 
 // Login with listeners active
-watcher.login('NzQzMTUzMDA3NTM3MTYwMjU1.XzQhLA.640kwnIQKzsEK2e5qaY8Xguadx0');
+safe.watcherLogin(watcher)
