@@ -1,6 +1,9 @@
 // Import safe login function
 const safe = require('./safe.js')
 
+// Import Commands
+const crypto = require('./commands/crypto')
+
 // Library import
 const Discord = require('discord.js')
 
@@ -22,6 +25,8 @@ watcher.on('message', message => {
 
     if (command === 'ping') {
         message.channel.send('pong!')
+    } else if (command === 'bitcoin') {
+        message.channel.send('Bitcoin Price (USD) = ' + crypto.getCoin('BTC'))
     }
 })
 
