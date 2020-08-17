@@ -27,6 +27,10 @@ watcher.on('message', message => {
         message.channel.send('pong!')
     } else if (command === 'bitcoin') {
         message.channel.send('Bitcoin Price (USD) = ' + crypto.getCoin('BTC'))
+    } else if (command === 'help') {
+        message.channel.send('Usage:\n!bitcoin - See current Bitcoin Buy Price')
+    } else {
+        message.channel.send('Invalid Command. Use "!help" for a list of uses.')
     }
 })
 
