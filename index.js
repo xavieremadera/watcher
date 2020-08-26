@@ -13,8 +13,6 @@ const prefix = '!'
 
 watcher.once('ready', () => {
     console.log('Watcher is online.')
-
-    
 })
 
 watcher.on('message', message => {
