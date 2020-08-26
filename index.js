@@ -13,6 +13,8 @@ const prefix = '!'
 
 watcher.once('ready', () => {
     console.log('Watcher is online.')
+
+    
 })
 
 watcher.on('message', message => {
@@ -25,10 +27,12 @@ watcher.on('message', message => {
 
     if (command === 'ping') {
         message.channel.send('pong!')
-    } else if (command === 'bitcoin') {
-        message.channel.send('Bitcoin Price (USD) = ' + crypto.getCoin('BTC'))
     } else if (command === 'help') {
         message.channel.send('Usage:\n!bitcoin - See current Bitcoin Buy Price')
+    } else if (command === 'rpt') {
+        setInterval(() => {
+            message.channel.send(message.author.username + ' did this.');
+        }, 1000)
     } else {
         message.channel.send('Invalid Command. Use "!help" for a list of uses.')
     }

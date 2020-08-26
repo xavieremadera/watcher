@@ -3,7 +3,7 @@ const fetch = require('node-fetch')
 
 const client = safe.createCoinbaseClient();
 
-const getCoin = async (coin) => {
+const getCoin = async (coin, arr) => {
     const pair = coin + '-USD'
     var amt = 0;
     /*
@@ -16,13 +16,12 @@ const getCoin = async (coin) => {
         })
     */
 
-    amt = await getPrice(pair)
+    amt = await getPrice(pair, arr)
 
     return amt
 }
 
-const getPrice = async (pair) => {
-    var amt = 0;
+const getPrice = async (pair, arr) => {
     try {
         const res = await fetch('https://api.coinbase.com/v2/prices/' + pair +'/buy')
 
@@ -30,14 +29,12 @@ const getPrice = async (pair) => {
             throw new Error(res.status)
         }
 
-        /*
         const price = await res.json()
-        amt = price.data.amount
-        */
+        
+        arr.push(price.data.amount)
     } catch (err) {
         console.log(err)
     }
-    return amt
 }
 
 exports.getCoin = getCoin;
