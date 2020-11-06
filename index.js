@@ -1,8 +1,8 @@
 // Import safe login function
 const safe = require('./safe.js')
 
-// Import Commands
-const crypto = require('./commands/crypto')
+// Import Deal of The Day
+const dotd = require('./commands/dotd.js')
 
 // Library import
 const Discord = require('discord.js')
@@ -27,10 +27,8 @@ watcher.on('message', message => {
         message.channel.send('pong!')
     } else if (command === 'help') {
         message.channel.send('Usage:\n!bitcoin - See current Bitcoin Buy Price')
-    } else if (command === 'rpt') {
-        setInterval(() => {
-            message.channel.send(message.author.username + ' did this.');
-        }, 1000)
+    } else if (command === 'dotd') {
+        dotd.getDOTD();
     } else {
         message.channel.send('Invalid Command. Use "!help" for a list of uses.')
     }
