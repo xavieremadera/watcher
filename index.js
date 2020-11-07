@@ -15,7 +15,7 @@ watcher.once('ready', () => {
     console.log('Watcher is online.')
 })
 
-watcher.on('message', message => {
+watcher.on('message', async (message) => {
     if (!message.content.startsWith(prefix) || message.author.bot) {
         return;
     }
@@ -26,9 +26,27 @@ watcher.on('message', message => {
     if (command === 'ping') {
         message.channel.send('pong!')
     } else if (command === 'help') {
-        message.channel.send('Usage:\n!bitcoin - See current Bitcoin Buy Price')
+        message.channel.send('Usage:\n!dotd - See current Best Buy deals of the day')
     } else if (command === 'dotd') {
-        dotd.getDOTD();
+
+        /* Get the array from the function, then build a string */
+        var deals = []
+        
+        deals = await dotd.getDOTD();
+
+        var msg = ''
+
+        /*
+        deals.forEach(deal => {
+            msg = msg + deal.title + '\n' + '\n'
+        });
+        */
+
+        for (var i = 0; i < deals.length; i++) {
+            msg = msg + deals[i].title + '\n' + '\n'
+        }
+
+        message.channel.send(msg)
     } else {
         message.channel.send('Invalid Command. Use "!help" for a list of uses.')
     }

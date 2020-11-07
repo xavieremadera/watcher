@@ -11,7 +11,8 @@ const url = 'https://www.bestbuy.com/site/misc/deal-of-the-day/pcmcat24800005001
 const getDOTD = async () => {
     const $ = await getData();
 
-    // console.log($('h3.product-title').text());
+    console.log('from getDOTD')
+
     const deals = []
 
     $('h3.product-title').each((i, elem) => {
@@ -30,7 +31,7 @@ const getDOTD = async () => {
     })
     */
 
-    console.log(deals)
+    return deals
 }
 
 
